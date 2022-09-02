@@ -27,7 +27,7 @@ class ProductPage(BasePage):
 		print(product_price_in_basket)
 		assert product_price in product_price_in_basket, f"not a valid price/n {self.browser.current_url}"
 
-	def is_element_present(self, how, what, timeout=4):
+	def is_element_present(self, how, what, timeout=1):
 		try:
 			WebDriverWait(self.browser, timeout).until(expected_conditions.presence_of_element_located((how, what)))
 		except TimeoutException:

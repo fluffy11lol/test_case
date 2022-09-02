@@ -17,7 +17,6 @@ class BasePage:
 	def get_element(self, how, what):
 		return self.browser.find_element(how, what)
 
-
 	def solve_quiz_and_get_code(self):
 		alert = self.browser.switch_to.alert
 		x = alert.text.split(" ")[2]
@@ -31,3 +30,6 @@ class BasePage:
 			alert.accept()
 		except NoAlertPresentException:
 			print("No second alert presented")
+
+	def open_basket(self):
+		self.browser.find_element("xpath", '''//*[@id="default"]/header/div[1]/div/div[2]/span/a''').click()

@@ -1,5 +1,4 @@
-import time
-
+from time import sleep
 import pytest
 from links import link_list
 from .pages.product_page import ProductPage
@@ -54,3 +53,11 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
 	page = ProductPage(browser, link)
 	page.open()
 	page.click_login_link()
+
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+	link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+	page = ProductPage(browser, link)
+	page.open()
+	page.open_basket()
+	page.is_element_present("xpath", '''//*[@id="content_inner"]/p''')
