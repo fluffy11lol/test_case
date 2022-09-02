@@ -1,7 +1,3 @@
-import time
-
-import pytest
-from links import link_list
 from .pages.product_page import ProductPage
 
 

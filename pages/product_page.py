@@ -27,14 +27,6 @@ class ProductPage(BasePage):
 		print(product_price_in_basket)
 		assert product_price in product_price_in_basket, f"not a valid price/n {self.browser.current_url}"
 
-	def is_element_present(self, how, what, timeout=1):
-		try:
-			WebDriverWait(self.browser, timeout).until(expected_conditions.presence_of_element_located((how, what)))
-		except TimeoutException:
-			return False
-
-		return True
-
 	def is_not_element_present(self, how, what, timeout=4):
 		try:
 			WebDriverWait(self.browser, timeout).until(expected_conditions.presence_of_element_located((how, what)))
@@ -47,7 +39,7 @@ class ProductPage(BasePage):
 		assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
 			"Success message is presented, but should not be"
 
-	def is_disappear(self, how, what, timeout=4):
+	def is_disappear(self, how, what, timeout=1):
 		try:
 			WebDriverWait(self.browser, timeout, 1, TimeoutException). \
 				until_not(expected_conditions.presence_of_element_located((how, what)))
