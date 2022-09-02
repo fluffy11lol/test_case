@@ -1,5 +1,5 @@
 import math
-
+from .locators import ProductPageLocators
 from selenium.common.exceptions import NoAlertPresentException  # в начале файла
 
 
@@ -11,8 +11,12 @@ class BasePage:
 	def open(self):
 		self.browser.get(self.url)
 
+	def click_element(self, how, what):
+		self.browser.find_element(how, what).click()
+
 	def get_element(self, how, what):
-		self.browser.find_element(how, what)
+		return self.browser.find_element(how, what)
+
 
 	def solve_quiz_and_get_code(self):
 		alert = self.browser.switch_to.alert
